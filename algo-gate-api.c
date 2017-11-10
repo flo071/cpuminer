@@ -15,7 +15,7 @@
 #include <stdbool.h>
 #include <memory.h>
 #include <unistd.h>
-#include <openssl/sha.h>
+#include "sha.h"
 #include "miner.h"
 #include "algo-gate-api.h"
 

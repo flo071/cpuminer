@@ -36,7 +36,7 @@
 
 #include <pthread.h>
 #include <jansson.h>
-#include <curl/curl.h>
+#include "curl.h"
 
 #ifdef STDC_HEADERS
 # include <stdlib.h>

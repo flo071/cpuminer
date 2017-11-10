@@ -27,7 +27,7 @@
 #include <math.h>
 #include <stdarg.h>
 #include <assert.h>
-#include <openssl/sha.h>
+#include "sha.h"
 #include <sys/stat.h>
 #include <sys/types.h>
 

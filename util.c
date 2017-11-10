@@ -23,7 +23,7 @@
 #include <errno.h>
 #include <unistd.h>
 #include <jansson.h>
-#include <curl/curl.h>
+#include "curl.h"
 #include <time.h>
 #include <sys/stat.h>
 #include <math.h>

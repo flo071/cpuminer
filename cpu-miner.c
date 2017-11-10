@@ -35,7 +35,7 @@
 #include <signal.h>
 #include <memory.h>
 
-#include <curl/curl.h>
+#include "curl.h"
 #include <jansson.h>
 #include <openssl/sha.h>
 
