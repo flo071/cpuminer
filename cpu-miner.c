@@ -2828,11 +2828,13 @@ static void show_credits()
 {
 	printf("\n         **********  "PACKAGE_NAME" "PACKAGE_VERSION"  *********** \n");
         printf("     A CPU miner with multi algo support and optimized for CPUs\n");
-        printf("     with AES_NI and AVX extensions.\n");
+        printf("     with AES_NI, AVX and SHA extensions.\n");
 	printf("     BTC donation address: 12tdvfF7KmAsihBXQXynT6E6th2c2pByTT\n");
         printf("     Forked from TPruvot's cpuminer-multi with credits\n");
         printf("     to Lucas Jones, elmad, palmd, djm34, pooler, ig0tik3d,\n");
-        printf("     Wolf0, Jeff Garzik and Optiminer.\n\n");
+        printf("     Wolf0, Jeff Garzik and Optiminer.\n");
+	printf("     Compiled and modified by flo071\n");
+	printf("     ZOI donation adress: ZbKWMxAWNokf812FBuy49bSnkfj1uweiBq\n\n");
 }
 
 bool check_cpu_capability ()
@@ -2843,11 +2845,11 @@ bool check_cpu_capability ()
      bool cpu_has_avx  = has_avx1();
      bool cpu_has_avx2 = has_avx2();
      bool cpu_has_sha  = has_sha();
-     bool sw_has_sse2  = false;
-     bool sw_has_aes   = false;
-     bool sw_has_avx   = false;
-     bool sw_has_avx2  = false;
-     bool sw_has_sha   = false;
+     bool sw_has_sse2  = true;
+     bool sw_has_aes   = true;
+     bool sw_has_avx   = true;
+     bool sw_has_avx2  = true;
+     bool sw_has_sha   = true;
      set_t algo_features = algo_gate.optimizations;
      bool algo_has_aes = set_incl( AES_OPT, algo_features );
      bool algo_has_avx = set_incl( AVX_OPT, algo_features );
@@ -2859,7 +2861,7 @@ bool check_cpu_capability ()
      bool use_avx2;
      bool use_sha;
 
-     #ifdef __AES__
+     #ifdef __AES__		
        sw_has_aes = true;
      #endif
      #ifdef __SSE2__
@@ -2919,7 +2921,7 @@ bool check_cpu_capability ()
      use_aes  = cpu_has_aes  && sw_has_aes  && algo_has_aes;
      use_avx  = cpu_has_avx  && sw_has_avx  && algo_has_avx;
      use_avx2 = cpu_has_avx2 && sw_has_avx2 && algo_has_avx2;
-     use_sha  = cpu_has_sha  && sw_has_sha  && algo_has_sha;
+     use_sha  = cpu_has_sha  && algo_has_sha;
 
      if ( use_sse2 )
      {
